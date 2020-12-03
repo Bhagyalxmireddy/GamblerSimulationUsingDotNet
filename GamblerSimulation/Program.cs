@@ -6,8 +6,6 @@ namespace GamblerSimulation
     {
         public const int STAKE = 100;
         public const int BET = 1;
-        int loss = 0;
-        int win = 0;
         int stakeValue;
         int result;
         static void Main(string[] args)
