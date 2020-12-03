@@ -7,35 +7,69 @@ namespace GamblerSimulation
         public const int STAKE = 100;
         public const int PERCENT = 50;
         public const int BET = 1;
+        public const int DAYS = 20;
         int winning = 0;
         int lossing = 0;
         int stakeValue;
         int result;
+        int winamount = 0;
+        int lossamount = 0;
+        int won = 0;
+        int loss = 0;
+        int amount;
+        int days;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to GamblerSimulation program");
             Program gambler = new Program();
-            gambler.gamblerGame();
+            gambler.totalAmount_For20Days();
         }
-        public  int gamblerGame()
+        public int gamblerGame()
         {
-            int value = (STAKE * PERCENT)/100;
+            int value = (STAKE * PERCENT) / 100;
             winning = STAKE + value;
             Console.WriteLine("The Winning value of gambler is : " + winning);
             lossing = STAKE - value;
             Console.WriteLine("The Lossing value of gambler is : " + lossing);
-            Random random = new Random();
-            int bettingToss = random.Next(0, 2);
-            if(bettingToss == 1)
+                amount = 100;
+                while (amount > lossing && amount < winning)
+                {
+                    Random random = new Random();
+                    int bettingToss = random.Next(0, 2);
+                    if (bettingToss == 1)
+                    {
+                        amount = amount + BET;
+                        Console.WriteLine("Gambler Won the Game : " + amount);
+                    }
+                    else
+                    {
+                        amount = amount - BET;
+                        Console.WriteLine("Gambler loss the Game : " + amount);
+                    }
+                }
+                if (amount == 150)
+                {
+                    winamount = winamount + amount;
+                    won = won + 1;
+                }
+                else
+                {
+                    lossamount = amount - lossamount;
+                    loss = loss - 1;
+                }
+                Console.WriteLine("amount of a day " + amount);
+                Console.WriteLine("amount of a day :" + days + "is: " + amount);
+            stakeValue = stakeValue + amount;
+            return result;
+        }
+        public int totalAmount_For20Days()
+        {
+            for (days = 1; days <= DAYS; days++)
             {
-                stakeValue = STAKE + BET;
-                Console.WriteLine("Gambler Won the Game : " + stakeValue);
-            }
-            else
-            {
-                stakeValue = STAKE - BET;
-                Console.WriteLine("Gambler loss the Game : " + stakeValue);
-            }
+                gamblerGame();
+                
+            }           
+            Console.WriteLine("Total amount used during the game : " + stakeValue);
             return result;
         }
     }
