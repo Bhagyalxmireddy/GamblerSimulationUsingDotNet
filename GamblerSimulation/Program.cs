@@ -6,8 +6,6 @@ namespace GamblerSimulation
     {
         public const int STAKE = 100;
         public const int BET = 1;
-        int loss = 0;
-        int win = 0;
         int stakeValue;
         int result;
         static void Main(string[] args)
@@ -23,12 +21,12 @@ namespace GamblerSimulation
             if(bettingToss == 1)
             {
                 stakeValue = STAKE + BET;
-                Console.WriteLine("Gambler Won the Game" + stakeValue);
+                Console.WriteLine("Gambler Won the Game : " + stakeValue);
             }
             else
             {
                 stakeValue = STAKE - BET;
-                Console.WriteLine("Gambler loss the Game" + stakeValue);
+                Console.WriteLine("Gambler loss the Game : " + stakeValue);
             }
             return result;
         }
